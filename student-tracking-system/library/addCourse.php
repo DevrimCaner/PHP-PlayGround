@@ -14,7 +14,7 @@ $name = isset($_POST['name']) ? htmlspecialchars(trim($_POST['name'])) : null;
 
 //Controls
 if(!$name){
-    $response['message'] = 'Ders İsimi bölümü boş olamaz';
+    $response['message'] = 'Ders isimi bölümü boş olamaz';
     return Response($response);
 }
 

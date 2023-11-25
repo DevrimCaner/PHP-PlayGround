@@ -74,7 +74,7 @@ $query = $db->prepare('INSERT INTO grades SET
     type = ?,
     grade = ?');
 $add = $query->execute([
-    $name
+    $student, $course, $type, $grade
 ]);
 if (!$add){
     $response['message'] = 'Kayıt ekleme sırasında hata oluştu';
