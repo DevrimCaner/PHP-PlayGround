@@ -68,8 +68,11 @@ if(!$checkCourse){
 }
 
 //DataBase
-$query = $db->prepare('INSERT INTO courses SET 
-    name = ?');
+$query = $db->prepare('INSERT INTO grades SET 
+    student = ?,
+    course = ?,
+    type = ?,
+    grade = ?');
 $add = $query->execute([
     $name
 ]);
