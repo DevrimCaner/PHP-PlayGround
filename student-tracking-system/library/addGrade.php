@@ -34,15 +34,15 @@ if(!$final){
     return Response($response);
 }
 
-if(!is_int($student)){
+if(!is_numeric($student)){
     $response['message'] = 'Hatalı Öğrenci verisi.';
     return Response($response);
 }
-if(!is_int($course)){
+if(!is_numeric($course)){
     $response['message'] = 'Hatalı Ders verisi';
     return Response($response);
 }
-if(!is_int($visa)){
+if(!is_numeric($visa)){
     $response['message'] = 'Hatalı Tür verisi';
     return Response($response);
 }
@@ -50,7 +50,7 @@ if($visa < 0 && $visa > 100){
     $response['message'] = 'Vize Notu 0 ile 100 arasında olmalıdır.';
     return Response($response);
 }
-if(!is_int($final)){
+if(!is_numeric($final)){
     $response['message'] = 'Hatalı Not verisi';
     return Response($response);
 }

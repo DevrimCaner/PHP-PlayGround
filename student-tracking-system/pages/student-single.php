@@ -14,6 +14,7 @@ if(!$record){
     return;
 }
 ?>
+<input type="hidden" id="student" value="<?php echo $record['id'];?>">
 <section>
     <div class="container">
         <h1>Öğrenci Bilgileri</h1>
@@ -28,21 +29,36 @@ if(!$record){
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ders Ekle</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ders Notu Ekle</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    
                     <div class="mb-3">
-                        <label for="name" class="form-label">Ders Adı</label>
-                        <input type="text" class="form-control" id="name" placeholder="Ders Adı">
+                        <label for="course" class="form-label">Ders Seçimi</label>
+                        <?php include 'components/selectCourse.php';?>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="visa" class="form-label">Vize Notu</label>
+                        <input type="number" class="form-control" id="visa" value="0" min="0" max="100" placeholder="Vize Notu">
+                    </div>
+                    <div class="mb-3">
+                        <label for="final" class="form-label">Final Notu</label>
+                        <input type="number" class="form-control" id="final" value="0" min="0" max="100" placeholder="Final Notu">
+                    </div>
+                    <div class="mb-3">
+                        <label for="average" class="form-label">Not Ortalaması</label>
+                        <input type="number" class="form-control" id="average" value="0" min="0" max="100" aria-label="Not Ortalaması" readonly>
+                    </div>
+
                     <div id="infoDivAllertMessage">
 
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-                    <button type="button" class="btn btn-primary" id="addButton" onclick="ADD()">Ekle</button>
+                    <button type="button" class="btn btn-primary" id="addButton" onclick="ADDGrade()">Ekle</button>
                 </div>
                 </div>
             </div>
@@ -51,33 +67,32 @@ if(!$record){
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Ders Numarası</th>
-                    <th scope="col">Ders Adı</th>
+                    <th scope="col">Ders</th>
+                    <th scope="col">Vize</th>
+                    <th scope="col">Final</th>
+                    <th scope="col">Ortalama</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
             <?php
-            $table = $db->query("SELECT * FROM courses")->fetchAll(PDO::FETCH_ASSOC);
+            $table = $db->query("SELECT *, ((visa * 0.4) + (final * 0.6)) AS average FROM grades JOIN courses ON grades.course = courses.id WHERE student = {$studentId}")->fetchAll(PDO::FETCH_ASSOC);
             foreach($table as $row){
             ?>
                 <tr>
-                    <th><?php echo $row['id'];?></th>
+                    <td><?php echo $row['name'];?></td>
+                    <td><?php echo $row['visa'];?></td>
+                    <td><?php echo $row['final'];?></td>
+                    <td><?php echo $row['average'];?></td>
                     <td>
-                        <span id="text<?php echo $row['id'];?>">
-                            <?php echo $row['name'];?>
-                        </span>
-                        <input style="display:none" name="edit<?php echo $row['id'];?>" maxlength="64" type="text" class="form-control" id="edit<?php echo $row['id'];?>" placeholder="Kategori" value="<?php echo $row['name'];?>">
-                    </td>
-                    <td>
-                    <button type="button" style="display:none" class="btn btn-secondary btn-sm" onclick="EditOff(<?php echo $row['id'];?>)" id="editOffButton<?php echo $row['id'];?>">İptal</button>
                         <button type="button" style="display:none" class="btn btn-info btn-sm" onclick="EDIT(<?php echo $row['id'];?>)" id="editButton<?php echo $row['id'];?>">Değiştir</button>
+                        <!--
                         <button type="button" class="btn btn-primary btn-sm" onclick="EditOn(<?php echo $row['id'];?>)" id="editOnButton<?php echo $row['id'];?>">Düzenle</button>
-                        
+                        -->
                         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?php echo $row['id'];?>"> Sil </button>
                     </td>
                 </tr>
-                <!-- Delete Modal -->
+                <!-- Grade Delete Modal -->
                 <div class="modal fade" id="delete<?php echo $row['id'];?>" tabindex="-1">
                     <div class="modal-dialog">
                     <div class="modal-content">
@@ -86,7 +101,7 @@ if(!$record){
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        <?php echo $row['name'];?> Dersini silmek istedğinize emin misniz ?
+                        <?php echo $record['firstName'] . ' ' . $record['lastName'];?> öğrencisinin <?php echo $row['name'];?> Notu silmek istedğinize emin misniz ?
                         <p>
                             <div id="deleteInfoDiv<?php echo $row['id'];?>"></div>
                         </p>
@@ -98,7 +113,7 @@ if(!$record){
                     </div>
                     </div>
                 </div>
-                <!-- Delete Modal-->
+                <!--End Grade Delete Modal-->
 
             <?php
             }

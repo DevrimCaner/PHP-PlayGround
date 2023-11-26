@@ -30,7 +30,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-                    <button type="button" class="btn btn-primary" id="addButton" onclick="ADD()">Ekle</button>
+                    <button type="button" class="btn btn-primary" id="addButton" onclick="ADDGrade()">Ekle</button>
                 </div>
                 </div>
             </div>
