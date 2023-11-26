@@ -11,3 +11,9 @@ function GoPage(){
         window.location.href = window.location.href;            
     }, 2000);
 }
+function GoPageHref(href){
+    console.log('GoPage')
+    window.setTimeout(function(){
+        window.location.href = href;            
+    }, 2000);
+}
