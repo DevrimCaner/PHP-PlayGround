@@ -6,6 +6,7 @@ const dangerAlert = "<div class='alert alert-danger alert-dismissible fade show'
 const secondaryAlert = "<div class='alert alert-secondary alert-dismissible fade show' role='alert'> <span id='infoDivAllertMessage'> </span> <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>";
 //Functions
 function GoPage(){
+    console.log('GoPage')
     window.setTimeout(function(){
         window.location.href = window.location.href;            
     }, 2000);

@@ -17,7 +17,7 @@ if(!$record){
 <section>
     <div class="container">
         <h1>Öğrenci Bilgileri</h1>
-        <h2><?php echo $record['firstName'] . $record['lastName'];?></h2>
+        <h2><?php echo $record['firstName'] . ' ' . $record['lastName'];?></h2>
         <h3><?php echo $record['birthDate'];?></h3>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Yeni Not Ekle</button>

@@ -24,7 +24,7 @@ if(!$lastName){
     return Response($response);
 }
 if(!$birthDate){
-    $response['message'] = 'Doğum bölümü boş olamaz';
+    $response['message'] = 'Doğum Tarihi bölümü boş olamaz';
     return Response($response);
 }
 
