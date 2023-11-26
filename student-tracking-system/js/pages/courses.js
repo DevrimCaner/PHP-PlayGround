@@ -192,10 +192,4 @@ function EDIT(categoryId){
           }
     });
 }
-
-function GoPage(){
-    window.setTimeout(function(){
-        window.location.href = window.location.href;            
-    }, 2000);
-}
   

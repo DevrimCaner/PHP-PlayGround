@@ -58,6 +58,29 @@
                         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?php echo $row['id'];?>"> Sil </button>
                     </td>
                 </tr>
+                <!-- Delete Modal -->
+                <div class="modal fade" id="delete<?php echo $row['id'];?>" tabindex="-1">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">Ders Silme</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <?php echo $row['name'];?> Dersini silmek istedğinize emin misniz ?
+                        <p>
+                            <div id="deleteInfoDiv<?php echo $row['id'];?>"></div>
+                        </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                            <button type="button" class="btn btn-danger" onclick="DELETE(<?php echo $row['id'];?>)" id="deleteButton<?php echo $row['id'];?>">Sil</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Delete Modal-->
+
             <?php
             }
             ?>
