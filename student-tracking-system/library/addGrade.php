@@ -70,6 +70,12 @@ if(!$checkCourse){
     $response['message'] = 'Ders Bulunamadı.';
     return Response($response);
 }
+//Check duplicity
+$checkDuplicity = $db->query("SELECT * FROM grades WHERE course = '{$course}' AND student = '{$student}'")->fetch(PDO::FETCH_ASSOC);
+if($checkDuplicity){
+    $response['message'] = 'Bu ders için halihazırda girilmiş not var.';
+    return Response($response);
+}
 
 //DataBase
 $query = $db->prepare('INSERT INTO grades SET
