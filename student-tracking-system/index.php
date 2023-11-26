@@ -16,6 +16,10 @@ switch ($PageName) {
         require_once 'pages/students.php';
         $jsfile = 'students.js';
     break;
+    case 'student':
+        require_once 'pages/student-single.php';
+        $jsfile = 'students.js';
+    break;
     case 'courses':
         require_once 'pages/courses.php';
         $jsfile = 'courses.js';

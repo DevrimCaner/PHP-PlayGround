@@ -23,7 +23,7 @@
                     <td><?php echo $row['lastName'];?></td>
                     <td><?php echo $row['age'];?></td>
                     <td>
-                        <a class="btn btn-primary" href="#" role="button">Görüntüle</a>
+                        <a class="btn btn-primary" href="index.php?page=student&student=<?php echo $row['id'];?>" role="button">Görüntüle</a>
                     </td>
                 </tr>
             <?php
