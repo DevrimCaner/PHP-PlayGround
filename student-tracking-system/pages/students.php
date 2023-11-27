@@ -5,7 +5,7 @@
         
         <!-- Add Modal -->
         <div class="modal fade bg-blur" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-            <div class="modal-dialog shadow rounded-pill">
+            <div class="modal-dialog shadow">
                 <div class="modal-content rounded-4">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5 text-primary" id="addModalLabel">Öğrenci Ekle</h1>
@@ -30,13 +30,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary rounded-pill shadow bg-gradient" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> İptal</button>
-                    <button type="button" class="btn btn-primary rounded-pill shadow bg-gradient" id="addButton" onclick="ADDGrade()"><i class="bi bi-plus-lg"></i> Ekle</button>
+                    <button type="button" class="btn btn-primary rounded-pill shadow bg-gradient ms-3" id="addButton" onclick="ADDGrade()"><i class="bi bi-plus-lg"></i> Ekle</button>
                 </div>
                 </div>
             </div>
         </div>
         <!-- End Add Modal -->
-        <table class="table table-hover shadow mt-4 rounded-4">
+        <table class="table table-hover shadow mt-4 rounded-4 text-primary">
             <thead>
                 <tr>
                     <th scope="col">Adı</th>
