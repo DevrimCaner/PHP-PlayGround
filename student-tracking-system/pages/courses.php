@@ -51,7 +51,7 @@
                         <input style="display:none" name="edit<?php echo $row['id'];?>" maxlength="64" type="text" class="form-control" id="edit<?php echo $row['id'];?>" placeholder="Kategori" value="<?php echo $row['name'];?>">
                     </td>
                     <td>
-                    <button type="button" style="display:none" class="btn btn-secondary btn-sm" onclick="EditOff(<?php echo $row['id'];?>)" id="editOffButton<?php echo $row['id'];?>">İptal</button>
+                        <button type="button" style="display:none" class="btn btn-secondary btn-sm" onclick="EditOff(<?php echo $row['id'];?>)" id="editOffButton<?php echo $row['id'];?>">İptal</button>
                         <button type="button" style="display:none" class="btn btn-info btn-sm" onclick="EDIT(<?php echo $row['id'];?>)" id="editButton<?php echo $row['id'];?>">Değiştir</button>
                         <button type="button" class="btn btn-primary btn-sm" onclick="EditOn(<?php echo $row['id'];?>)" id="editOnButton<?php echo $row['id'];?>">Düzenle</button>
                         

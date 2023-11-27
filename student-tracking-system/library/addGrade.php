@@ -26,11 +26,11 @@ if(!$course){
     return Response($response);
 }
 if(!$visa){
-    $response['message'] = 'Tür verisi boş olamaz';
+    $response['message'] = 'Vize verisi boş olamaz';
     return Response($response);
 }
 if(!$final){
-    $response['message'] = 'Not verisi boş olamaz';
+    $response['message'] = 'Final verisi boş olamaz';
     return Response($response);
 }
 
@@ -43,7 +43,7 @@ if(!is_numeric($course)){
     return Response($response);
 }
 if(!is_numeric($visa)){
-    $response['message'] = 'Hatalı Tür verisi';
+    $response['message'] = 'Hatalı vize verisi';
     return Response($response);
 }
 if($visa < 0 && $visa > 100){
@@ -51,7 +51,7 @@ if($visa < 0 && $visa > 100){
     return Response($response);
 }
 if(!is_numeric($final)){
-    $response['message'] = 'Hatalı Not verisi';
+    $response['message'] = 'Hatalı final verisi';
     return Response($response);
 }
 if($final < 0 && $final > 100){

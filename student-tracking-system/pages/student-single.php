@@ -83,14 +83,31 @@ if(!$record){
             ?>
                 <tr>
                     <td><?php echo $row['name'];?></td>
-                    <td><?php echo $row['visa'];?></td>
-                    <td><?php echo $row['final'];?></td>
-                    <td><?php echo $row['average'];?></td>
                     <td>
-                        <button type="button" style="display:none" class="btn btn-info btn-sm" onclick="EDIT(<?php echo $row['gradeId'];?>)" id="editButton<?php echo $row['gradeId'];?>">Değiştir</button>
-                        <!--
+                        <span id="visaText<?php echo $row['gradeId'];?>">
+                            <?php echo $row['visa'];?>
+                        </span>
+                        <input style="display:none" name="visaEdit<?php echo $row['gradeId'];?>" min="0" max="100" type="number" class="form-control" id="visaEdit<?php echo $row['gradeId'];?>" value="<?php echo $row['visa'];?>">
+                    </td>
+                    <td>
+                        <span id="finalText<?php echo $row['gradeId'];?>">
+                            <?php echo $row['final'];?>
+                        </span>
+                        <input style="display:none" name="finalEdit<?php echo $row['gradeId'];?>" min="0" max="100" type="number" class="form-control" id="finalEdit<?php echo $row['gradeId'];?>" value="<?php echo $row['final'];?>">
+                    </td>
+                    <td>
+                        <span id="averageText<?php echo $row['gradeId'];?>">
+                            <?php echo $row['average'];?>
+                        </span>
+                        <input style="display:none" name="averageEdit<?php echo $row['gradeId'];?>" min="0" max="100" type="number" class="form-control" id="averageEdit<?php echo $row['gradeId'];?>" value="<?php echo $row['average'];?>" readonly>
+                    </td>
+                    <td>
+                        <button type="button" style="display:none" class="btn btn-secondary btn-sm" onclick="EditOff(<?php echo $row['gradeId'];?>)" id="editOffButton<?php echo $row['gradeId'];?>">İptal</button>
+                    
+                        <button type="button" style="display:none" class="btn btn-info btn-sm" onclick="EDITGrade(<?php echo $row['gradeId'];?>)" id="editButton<?php echo $row['gradeId'];?>">Değiştir</button>
+                        
                         <button type="button" class="btn btn-primary btn-sm" onclick="EditOn(<?php echo $row['gradeId'];?>)" id="editOnButton<?php echo $row['gradeId'];?>">Düzenle</button>
-                        -->
+
                         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?php echo $row['gradeId'];?>"> Sil </button>
                     </td>
                 </tr>

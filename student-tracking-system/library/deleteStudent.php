@@ -29,6 +29,10 @@ $delete = $query->execute(array(
     'deleteId' => $deleteId
 ));
 if (!$delete){
+    $query2 = $db->prepare("DELETE FROM grades WHERE student = :deleteId");
+    $delete2 = $query2->execute(array(
+        'deleteId' => $deleteId
+    ));
     $response['message'] = 'Silme işlemi sırasında hata oluştu';
     return Response($response);
 }
