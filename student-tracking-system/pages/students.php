@@ -1,45 +1,44 @@
-<section>
+<section class="pt-4">
     <div class="container">
-        <h1>Öğrenciler</h1>
+        <h1 class="text-primary fs-2">Öğrenciler <button type="button" class="btn btn-primary bg-gradient rounded-pill shadow" data-bs-toggle="modal" data-bs-target="#addModal"><i class="bi bi-plus-lg"></i> Ekle</button></h1>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Yeni Öğrenci Ekle</button>
+        
         <!-- Add Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+        <div class="modal fade bg-blur" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog shadow rounded-pill">
+                <div class="modal-content rounded-4">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Öğrenci Ekle</h1>
+                    <h1 class="modal-title fs-5 text-primary" id="addModalLabel">Öğrenci Ekle</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="firstName" class="form-label">Adı</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Adı">
+                        <label for="firstName" class="form-label fs-5 ps-2 text-primary">Adı</label>
+                        <input type="text" class="form-control rounded-pill border border-primary" id="firstName" placeholder="Adı">
                     </div>
                     <div class="mb-3">
-                        <label for="lastName" class="form-label">Soy Adı</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Soy Adı">
+                        <label for="lastName" class="form-label fs-5 ps-2 text-primary">Soy Adı</label>
+                        <input type="text" class="form-control rounded-pill border border-primary" id="lastName" placeholder="Soy Adı">
                     </div>
                     <div class="mb-3">
-                        <label for="birthDate" class="form-label">Doğum Tarihi</label>
-                        <input type="date" class="form-control" id="birthDate" placeholder="Doğum Tarihi">
+                        <label for="birthDate" class="form-label fs-5 ps-2 text-primary">Doğum Tarihi</label>
+                        <input type="date" class="form-control rounded-pill border border-primary" id="birthDate" placeholder="Doğum Tarihi">
                     </div>
                     <div id="infoDivAllertMessage">
 
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-                    <button type="button" class="btn btn-primary" id="addButton" onclick="ADDGrade()">Ekle</button>
+                    <button type="button" class="btn btn-secondary rounded-pill shadow bg-gradient" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> İptal</button>
+                    <button type="button" class="btn btn-primary rounded-pill shadow bg-gradient" id="addButton" onclick="ADDGrade()"><i class="bi bi-plus-lg"></i> Ekle</button>
                 </div>
                 </div>
             </div>
         </div>
         <!-- End Add Modal -->
-        <table class="table">
+        <table class="table table-hover shadow mt-4 rounded-4">
             <thead>
                 <tr>
-                    <th scope="col">Öğrenci Numarası</th>
                     <th scope="col">Adı</th>
                     <th scope="col">Soy Adı</th>
                     <th scope="col">Yaş</th>
@@ -52,12 +51,11 @@
             foreach($table as $row){
             ?>
                 <tr>
-                    <th><?php echo $row['id'];?></th>
                     <td><?php echo $row['firstName'];?></td>
                     <td><?php echo $row['lastName'];?></td>
                     <td><?php echo $row['age'];?></td>
-                    <td>
-                        <a class="btn btn-primary" href="index.php?page=student&student=<?php echo $row['id'];?>" role="button">Görüntüle</a>
+                    <td class="text-end pe-3">
+                        <a class="btn btn-info rounded-pill text-light bg-gradient shadow" href="index.php?page=student&student=<?php echo $row['id'];?>" role="button"><i class="bi bi-search"></i> Görüntüle</a>
                     </td>
                 </tr>
             <?php

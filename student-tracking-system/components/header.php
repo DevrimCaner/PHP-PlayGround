@@ -16,21 +16,21 @@
     <body class="d-flex flex-column h-100 bg-light">
         <main class="flex-shrink-0">
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-black bg-opacity-75 bg-blur">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="index.php">Öğrenci Takip Sistemi</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link <?php if($PageName == 'students'){echo 'active'; }?>" aria-current="page" href="index.php?page=students">Öğrenciler</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if($PageName == 'courses'){echo 'active'; }?>" href="index.php?page=courses">Dersler</a>
-                        </li>
-                    </ul>
+                    <div class="collapse navbar-collapse " id="navbarNav">
+                        <ul class="navbar-nav ms-5">
+                            <li class="nav-item">
+                                <a class="nav-link <?php if($PageName == 'students'){echo 'active'; }?>" aria-current="page" href="index.php?page=students">Öğrenciler</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if($PageName == 'courses'){echo 'active'; }?>" href="index.php?page=courses">Dersler</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
