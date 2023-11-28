@@ -1,7 +1,7 @@
 <?php
 $options = $db->query("SELECT * FROM courses")->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<select class="form-select" aria-label="dersler" id="course">
+<select class="form-select rounded-pill border border-primary" aria-label="dersler" id="course">
     <option value="0">Belirtilmemiş</option>
     <?php
     foreach($options as $option){

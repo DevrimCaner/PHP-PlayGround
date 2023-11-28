@@ -16,12 +16,12 @@
 }
 
 .btn-info:hover{
-    background-color: #9b59b6 !important;
-    border-color: #8e44ad !important;
-}
-.btn-info{
     background-color: #8e44ad !important;
     border-color: #9b59b6 !important;
+}
+.btn-info{
+    background-color: #9b59b6 !important;
+    border-color: #8e44ad !important;
 }
 .btn-secondary{
     background-color: #7f8c8d;
