@@ -28,3 +28,20 @@
     border-color: #95a5a6;
     
 }
+
+.btn-outline-primary{
+    color: #2980b9;
+}
+.btn-outline-primary:hover{
+    background-color: #2980b9;
+}
+
+.bg-purple{
+    background-color: #9b59b6 !important;
+}
+.bg-primary{
+    background-color: #3498db !important;
+}
+.bg-success{
+    background-color: #2ecc71 !important;
+}
