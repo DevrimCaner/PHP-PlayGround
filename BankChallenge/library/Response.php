@@ -15,7 +15,7 @@ class Response {
         ]);
     }
 
-    public function ExitScript() {
+    public function Exit() {
         $this->ToJson();
         exit;
     }

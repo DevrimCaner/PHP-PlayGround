@@ -4,7 +4,7 @@ include_once 'library/Response.php';
 // Check is Action Defined
 if(!isset($_GET['action'])){
     $response = new Response("error", "No Action Defined.");
-    $response->ExitScript();
+    $response->Exit();
 }
 // Import Database Config and Class
 include_once 'config/database.php';
@@ -13,7 +13,7 @@ include_once 'library/Database.php';
 switch($_GET['action']){
     case 'test':
         $response = new Response("success", "Test Action.");
-        $response->ExitScript();
+        $response->Exit();
         /*
         $database = new Database($db);
         $allRecords = $database->getAllRecords('your_table_name');
@@ -24,9 +24,14 @@ switch($_GET['action']){
         */
 
     break;
+    // Creates Account With owner and currency values with zero ballance.
+    case 'create-account':
+        include_once 'actions/create-account.php';
+    break;
+    // Undefined Action
     default:
         $response = new Response("error", "Undefined Action.");
-        $response->ExitScript();
+        $response->Exit();
     break;
 }
 ?>
