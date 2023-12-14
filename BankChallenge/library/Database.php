@@ -41,8 +41,13 @@ class Database {
 
         $query = "UPDATE $table SET $setClause WHERE id = :id";
         $statement = $this->pdo->prepare($query);
+
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
-        $statement->execute($data);
+        foreach ($data as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+
+        $statement->execute();
 
         return $statement->rowCount();
     }
