@@ -12,6 +12,15 @@ class Database {
         $statement = $this->pdo->query($query);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    // Returns records on given table with offset
+    public function GetRecordsByOffset($table, $offset, $limit) {
+        $query = "SELECT * FROM $table LIMIT :limit OFFSET :offset";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
     // Returns the single record on given table
     public function GetRecordById($table, $id) {
         $query = "SELECT * FROM $table WHERE id = :id";
