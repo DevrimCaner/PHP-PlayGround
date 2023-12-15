@@ -35,15 +35,15 @@ switch($_GET['action']){
     case 'get-account':
         include_once 'actions/get-account.php';
     break;
-    // For Sync between diffrent hosts
-    case 'sync-hosts':
-        include_once 'actions/sync-hosts.php';
+    // For Sync between diffrent Databases
+    case 'sync-database':
+        include_once 'actions/sync-database.php';
     break;
 
     // For Test Actions
     case 'test':
-        $database = new Database($db);
-        $insert = $database->InsertRecord('accounts', ['id' => 2, 'owner' => 'Test', 'currency' => 'TRY', 'created_at' => '2022-12-14 21:47:52']);
+        $database = new Database($dbHost);
+        $insert = $database->InsertRecord('accounts', ['id' => 3, 'owner' => 'Test', 'currency' => 'TRY', 'created_at' => '2022-12-14 21:47:52']);
         // Response
         if($insert){
             $response = new Response("success", "Account Created Successfully.");
