@@ -35,6 +35,25 @@ switch($_GET['action']){
     case 'get-account':
         include_once 'actions/get-account.php';
     break;
+    // For Sync between diffrent hosts
+    case 'sync-hosts':
+        include_once 'actions/sync-hosts.php';
+    break;
+
+    // For Test Actions
+    case 'test':
+        $database = new Database($db);
+        $insert = $database->InsertRecord('accounts', ['id' => 2, 'owner' => 'Test', 'currency' => 'TRY', 'created_at' => '2022-12-14 21:47:52']);
+        // Response
+        if($insert){
+            $response = new Response("success", "Account Created Successfully.");
+            $response->Exit();
+        }
+        else{
+            $response = new Response("error", "There is an error while creating account, please try again later.");
+            $response->Exit();
+        }
+    break;
     
     // Undefined Action
     default:
