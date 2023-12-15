@@ -23,6 +23,18 @@ switch($_GET['action']){
     case 'make-transfer':
         include_once 'actions/make-transfer.php';
     break;
+    // Deletes Account
+    case 'delete-account':
+        include_once 'actions/delete-account.php';
+    break;
+    // List Account
+    case 'list-accounts':
+        include_once 'actions/list-accounts.php';
+    break;
+    // Get Account By Id
+    case 'get-account':
+        include_once 'actions/get-account.php';
+    break;
     
     // Undefined Action
     default:

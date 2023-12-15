@@ -52,13 +52,24 @@ class Database {
         return $statement->rowCount();
     }
     // Delete data on given table
-    public function DeleteRecord($table, $id) {
-        $query = "DELETE FROM $table WHERE id = :id";
+    public function DeleteRecord($table, $conditions) {
+        $whereClause = "";
+        foreach ($conditions as $key => $value) {
+            $whereClause .= "$key=:$key AND ";
+        }
+        $whereClause = rtrim($whereClause, ' AND ');
+
+        $query = "DELETE FROM $table WHERE $whereClause";
         $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+        foreach ($conditions as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+
         $statement->execute();
 
         return $statement->rowCount();
     }
+
 }
 ?>
