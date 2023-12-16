@@ -2,7 +2,9 @@
 $database = new Database($db);
 $databaseHost = new Database($dbHost);
 
+// Send Updates
 SyncFullDB($database, $databaseHost);
+// Get Updates
 SyncFullDB($databaseHost, $database);
 
 //Overwrites First database to Secon database
@@ -35,6 +37,5 @@ function SyncTable($firstDB, $secondDB, $table){
         }
     }
 }
-
 ?>
 

@@ -39,8 +39,16 @@ switch($_GET['action']){
     case 'sync-database':
         include_once 'actions/sync-database.php';
     break;
+    // For Sync between diffrent Hosts
+    case 'sync-hosts':
+        include_once 'actions/sync-hosts.php';
+    break;
+    // Returns the Given table for sync
+    case 'get-table':
+        include_once 'actions/get-table.php';
+    break;
 
-    // For Test Actions
+
     case 'test':
         $database = new Database($dbHost);
         $insert = $database->InsertRecord('accounts', ['id' => 3, 'owner' => 'Test', 'currency' => 'TRY', 'created_at' => '2022-12-14 21:47:52']);
