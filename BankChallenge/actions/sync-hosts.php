@@ -26,7 +26,7 @@ SyncTable('transfers', $path);
 // If Update setted true, send sync request to path
 if($update == 'true'){
     // Get the current Url
-    $thisURL = ($_SERVER['HTTPS'] ?? 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $thisURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     $thisURL = explode('?', $thisURL)[0];
     // Set the url to be used in curl
     $url = $path . "?action=sync-hosts&path=" . $thisURL . "&update=false";
@@ -39,8 +39,20 @@ if($update == 'true'){
     $response = curl_exec($curl);
     // Close cURL session
     curl_close($curl);
+    // Convert Result for getting status
+    $response = json_decode($response);
+    if($response->Status == 'success'){
+        $response = new Response("success", "Host Synchronization is complated.");
+        $response->Exit();
+    }
+    else{
+        $response = new Response("warning", "Synchronization is complated but An error occurred on the remote server .");
+        $response->Exit();
+    }
 }
-// Response
-$response = new Response("success", "Synchronization is successful.");
-$response->Exit();
+else{
+    // Response
+    $response = new Response("success", "Synchronization is complated.");
+    $response->Exit();
+}
 ?>

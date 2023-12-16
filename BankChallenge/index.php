@@ -43,21 +43,6 @@ switch($_GET['action']){
     case 'get-table':
         include_once 'actions/get-table.php';
     break;
-
-
-    case 'test':
-        $database = new Database($dbHost);
-        $insert = $database->InsertRecord('accounts', ['id' => 3, 'owner' => 'Test', 'currency' => 'TRY', 'created_at' => '2022-12-14 21:47:52']);
-        // Response
-        if($insert){
-            $response = new Response("success", "Account Created Successfully.");
-            $response->Exit();
-        }
-        else{
-            $response = new Response("error", "There is an error while creating account, please try again later.");
-            $response->Exit();
-        }
-    break;
     
     // Undefined Action
     default:
