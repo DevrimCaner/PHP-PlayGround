@@ -35,10 +35,6 @@ switch($_GET['action']){
     case 'get-account':
         include_once 'actions/get-account.php';
     break;
-    // For Sync between diffrent Databases
-    case 'sync-database':
-        include_once 'actions/sync-database.php';
-    break;
     // For Sync between diffrent Hosts
     case 'sync-hosts':
         include_once 'actions/sync-hosts.php';

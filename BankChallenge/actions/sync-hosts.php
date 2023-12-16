@@ -1,44 +1,35 @@
 <?php
-exit;
-$path = 'http://localhost:8888/test/';
 // Get Values
-// Path
-// Update
+$path = isset($_GET['path']) ? htmlspecialchars(trim($_GET['path'])) : null;
+$update = isset($_GET['update']) ? $_GET['update'] : null;
+
 // Check Values
-
-// Sync
-$database = new Database($db);
-SyncTable('accounts');
-SyncTable('entries');
-SyncTable('transfers');
-//If Update == true send curl again as update false
-
-
-
-
-
-// Sync the given Table
-function SyncTable($table){
-    // Get all Records in first table
-    $rows = GetRecordsByUrl($path . '?action=get-table&table=' . $table);
-    // Look for every record in first database
-    foreach($rows as $row){
-        $select = $database->GetRecordById($table, $row['id']);
-        // Is there a record in same ID in second database
-        if($select){
-            // Are the values same
-            if($row !== $select){
-                // If there is a diffrance make update
-                $update = $database->UpdateRecord($table, $row['id'], $row);
-            }
-        }
-        else{
-            // If there is no record, insert record to second database
-            $insert = $database->InsertRecord($table, $row);
-        }
-    }
+if(!$path){
+    $response = new Response("error", "Path required.");
+    $response->Exit();
 }
-function GetRecordsByUrl($url){
+if(!$update){
+    $response = new Response("error", "Update information required..");
+    $response->Exit();
+}
+if($update != 'true' && $update != 'false'){
+    $response = new Response("error", "Please Set Update value as 'true' or 'false'.");
+    $response->Exit();
+}
+
+// Import Sync Library
+include_once 'library/Sync.php';
+// Sync All tables
+SyncTable('accounts', $path);
+SyncTable('entries', $path);
+SyncTable('transfers', $path);
+// If Update setted true, send sync request to path
+if($update == 'true'){
+    // Get the current Url
+    $thisURL = ($_SERVER['HTTPS'] ?? 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $parsedUrl = parse_url($thisURL);
+    // Set the url to be used in curl
+    $url = $path . "?action=sync-hosts&path=" . $parsedUrl['path'] . "&update=false";
     // Initialize cURL session
     $curl = curl_init($url);
     // Set cURL options
@@ -46,14 +37,10 @@ function GetRecordsByUrl($url){
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     // Execute cURL session and get the response
     $response = curl_exec($curl);
-    // Check for cURL errors
-    if (curl_errno($curl)) {
-        $response = new Response("error", "cURL Request has been failed.");
-        $response->Exit();
-    }
     // Close cURL session
     curl_close($curl);
-    
-    return json_decode($response);
 }
+// Response
+$response = new Response("success", "Synchronization is successful.");
+$response->Exit();
 ?>
