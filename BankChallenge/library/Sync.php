@@ -11,18 +11,21 @@ function SyncTable($table, $path){
     $database = new Database($db);
     // Look for every record in first database
     foreach($rows as $row){
-        $select = $database->GetRecordById($table, $row['id']);
+        // Convert Php object into array
+        $rowData = (array)$row;
+        // Try to find record on this host
+        $select = $database->GetRecordById($table, $rowData['id']);
         // Is there a record in same ID in second database
         if($select){
             // Are the values same
-            if($row !== $select){
+            if($rowData !== $select){
                 // If there is a diffrance make update
-                $update = $database->UpdateRecord($table, $row['id'], $row);
+                $update = $database->UpdateRecord($table, $rowData['id'], $rowData);
             }
         }
         else{
             // If there is no record, insert record to second database
-            $insert = $database->InsertRecord($table, $row);
+            $insert = $database->InsertRecord($table, $rowData);
         }
     }
 }

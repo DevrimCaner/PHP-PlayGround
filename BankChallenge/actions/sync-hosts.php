@@ -27,9 +27,9 @@ SyncTable('transfers', $path);
 if($update == 'true'){
     // Get the current Url
     $thisURL = ($_SERVER['HTTPS'] ?? 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    $parsedUrl = parse_url($thisURL);
+    $thisURL = explode('?', $thisURL)[0];
     // Set the url to be used in curl
-    $url = $path . "?action=sync-hosts&path=" . $parsedUrl['path'] . "&update=false";
+    $url = $path . "?action=sync-hosts&path=" . $thisURL . "&update=false";
     // Initialize cURL session
     $curl = curl_init($url);
     // Set cURL options
