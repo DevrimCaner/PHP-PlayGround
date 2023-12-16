@@ -47,6 +47,8 @@ class Database {
             $setClause .= "$key=:$key, ";
         }
         $setClause = rtrim($setClause, ', ');
+        // Begin Transaction
+        $this->pdo->beginTransaction();
 
         $query = "UPDATE $table SET $setClause WHERE id = :id";
         $statement = $this->pdo->prepare($query);
@@ -55,9 +57,9 @@ class Database {
         foreach ($data as $key => $value) {
             $statement->bindValue(":$key", $value);
         }
-
         $statement->execute();
-
+        // Commit Transaction
+        $this->pdo->commit();
         return $statement->rowCount();
     }
     // Delete data on given table

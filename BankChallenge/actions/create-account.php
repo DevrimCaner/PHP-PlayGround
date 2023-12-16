@@ -15,16 +15,18 @@ if(!$currency){
     $response = new Response("error", "Currency cannot be null.");
     $response->Exit();
 }
-// Owner lengt must be between 4 and 32
-if(strlen($owner) < 4 || strlen($owner) > 32){
-    $response = new Response("error", "Owner must be between 4 and 32 characters.");
+// Owner regex control
+if (!preg_match("/^[a-zA-Z ]{4,32}$/", $owner)) {
+    $response = new Response("error", "Invalid format for owner.");
     $response->Exit();
 }
-// Currency lengt must be between 4 and 32
-if(strlen($currency) < 1 || strlen($currency) > 4){
-    $response = new Response("error", "Currency must be between 1 and 4 characters.");
+
+// Currency regex control
+if (!preg_match("/^[A-Z]{1,4}$/", $currency)) {
+    $response = new Response("error", "Invalid format for currency.");
     $response->Exit();
 }
+
 
 // Insert
 $database = new Database($db);
