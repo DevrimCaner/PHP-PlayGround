@@ -22,7 +22,7 @@ if(!$accountData){
     $response->Exit();
 }
 // Check ballance is zero
-if($accountData['balance'] !== 0){
+if(intval($accountData['balance']) !== 0){
     $response = new Response("error", "Account balance must be zero before deleted.");
     $response->Exit();
 }
