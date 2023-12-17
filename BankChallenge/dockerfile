@@ -1,0 +1,8 @@
+# Use PHP
+FROM php:7.4-apache
+
+# Copy app dodes in Docker Container
+COPY . /var/www/html
+
+# Start
+CMD ["apache2-foreground"]
